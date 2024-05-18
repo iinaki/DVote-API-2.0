@@ -26,8 +26,8 @@ def create_user(user: User):
         created_user_id = result.inserted_primary_key[0]
         new_user["id"] = created_user_id # Agregar el ID generado a la respuesta
         return new_user
-    except SQLAlchemyError:
-        raise HTTPException(status_code=400, detail="Error creating user")
+    except SQLAlchemyError as e:
+        raise HTTPException(status_code=400, detail=f"Error creating user: {e}")
 
 @user.put('/users/{sha_dni}', response_model=User, tags=['users'])
 def update_user(sha_dni: str):
