@@ -22,9 +22,8 @@ def get_user(sha_dni: str):
 def create_user(user: User):
     new_user = {'sha_dni': user.sha_dni, 'voto': False, 'lugar_residencia': user.lugar_residencia}
     try:
-        result = conn.execute(users.insert().values(new_user))
-        created_user_id = result.inserted_primary_key[0]
-        new_user["id"] = created_user_id # Agregar el ID generado a la respuesta
+        result = conn.execute(insert(users).values(new_user).returning(users.c.id))
+        new_user['id'] = result.fetchone()[0]
         return new_user
     except SQLAlchemyError as e:
         raise HTTPException(status_code=400, detail=f"Error creating user: {e}")
