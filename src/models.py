@@ -5,7 +5,7 @@ from src.db import meta, engine
 users = Table(
     'user', meta,
     Column('id', Integer, primary_key=True, autoincrement=True),
-    Column('sha_dni', BigInteger),
+    Column('sha_dni', String(255)),
     Column('voto', Boolean),
     Column('lugar_residencia', String(255))
 )
