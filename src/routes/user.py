@@ -23,7 +23,8 @@ def create_user(user: User):
     new_user = {'sha_dni': user.sha_dni, 'voto': False, 'lugar_residencia': user.lugar_residencia}
     try:
         result = conn.execute(users.insert().values(new_user))
-        new_user['id'] = result.lastrowid
+        created_user_id = result.inserted_primary_key[0]
+        new_user["id"] = created_user_id # Agregar el ID generado a la respuesta
         return new_user
     except SQLAlchemyError:
         raise HTTPException(status_code=400, detail="Error creating user")
