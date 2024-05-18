@@ -9,5 +9,4 @@ users = Table(
     Column('voto', Boolean),
     Column('lugar_residencia', String(255))
 )
-
 meta.create_all(bind=engine)
