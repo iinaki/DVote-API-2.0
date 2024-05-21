@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Response, status, HTTPException, Depends
 from src.db import conn
+from src.middleware import get_db
 from src.models import users
 from src.schemas import User
 from sqlalchemy.exc import SQLAlchemyError
@@ -10,7 +11,6 @@ from starlette.status import HTTP_404_NOT_FOUND
 from typing import List
 
 from sqlalchemy.sql.expression import select
-from src.middleware import get_db
 
 user = APIRouter()
 
