@@ -2,6 +2,7 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sess
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine, MetaData
+from sqlalchemy.orm import sessionmaker
 
 
 # DATABASE_URL = "postgresql://dvote_user:aD7nniFvRBRiCc4rkSTBWcypCQh18yka@dpg-cp0nkta1hbls73edkjc0-a.ohio-postgres.render.com/dvote"
@@ -13,6 +14,8 @@ DATABASE_URL = "postgresql://dvote_user:aD7nniFvRBRiCc4rkSTBWcypCQh18yka@dpg-cp0
 
 # engine = create_engine(url=DATABASE_URL, echo=True)
 engine = create_engine(url=DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
 meta = MetaData()
 conn = engine.connect()    
 

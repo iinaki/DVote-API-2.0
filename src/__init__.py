@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from src.routes.user import user
+from middleware import DBSessionMiddleware
 from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -16,6 +17,13 @@ def create_app():
     )
 
     app.include_router(user)
+
+    app.add_middleware(DBSessionMiddleware)
+
+    origins = [
+        "http://localhost:5173",
+    ]
+
 
     app.add_middleware(
         CORSMiddleware,
