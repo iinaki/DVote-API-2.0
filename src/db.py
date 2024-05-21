@@ -4,7 +4,9 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine, MetaData
 
 
-DATABASE_URL = "postgresql://dvote_user:aD7nniFvRBRiCc4rkSTBWcypCQh18yka@dpg-cp0nkta1hbls73edkjc0-a.ohio-postgres.render.com/dvote"
+# DATABASE_URL = "postgresql://dvote_user:aD7nniFvRBRiCc4rkSTBWcypCQh18yka@dpg-cp0nkta1hbls73edkjc0-a.ohio-postgres.render.com/dvote"
+
+DATABASE_URL = "postgresql://dvote_user:aD7nniFvRBRiCc4rkSTBWcypCQh18yka@dpg-cp0nkta1hbls73edkjc0-a/dvote"
 
 # class Base(DeclarativeBase):
 #     pass
