@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from src.routes.user import user
-from middleware import DBSessionMiddleware
+from src.middleware import DBSessionMiddleware
 from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
 
