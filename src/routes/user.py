@@ -43,7 +43,7 @@ def update_user(sha_dni: str, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="User not found")
 
     if user.voto:
-        return db.execute(users.select().where(users.c.sha_dni == sha_dni)).first()
+        return user
 
     try:
         db.execute(users.update().values(voto=True).where(users.c.sha_dni == sha_dni))
